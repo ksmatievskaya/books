@@ -1,0 +1,42 @@
+.add {
+    &__item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    &__name {
+        margin-bottom: 7px;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    input {
+        border: 1px solid black;
+        border-radius: 7px;
+        height: 30px;
+        padding-left: 10px;
+        padding-top: 5px;
+    }
+
+    textarea {
+        resize: none;
+        border: 1px solid black;
+        border-radius: 7px;
+        padding-left: 10px;
+        padding-top: 5px;
+    }
+
+    &__btn {
+        width: 80px;
+        height: 35px;
+        background-color: #000;
+        border-radius: 10px;
+        color: #fff;
+
+        &:hover {
+            background-color: #333333;
+            border-color: #333333;
+        }
+    }
+}
