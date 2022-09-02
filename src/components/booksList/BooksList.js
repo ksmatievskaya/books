@@ -1,9 +1,10 @@
-
+import './bookList.scss';
 import { useEffect, useCallback } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {selector, fetchBooks, deleteBook} from './booksSlice';
 import BooksItem from "../booksItem/BooksItem";
 import Spinner from "../spinner/Spinner";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const BooksList = () => {
     const booksLoadingStatus = useSelector(state => state.books.booksLoadingStatus);
@@ -28,7 +29,12 @@ const BooksList = () => {
     const renderBooksList = (arr) => {
         return arr.map(({id, ...props}) => {
             return (
-                <BooksItem {...props} key={id} onDelete={() => onDelete(id)}/>
+                <CSSTransition
+                    key={id}
+                    timeout={500}
+                    classNames='book'>
+                    <BooksItem {...props} onDelete={() => onDelete(id)}/>
+                </CSSTransition>
             )
         })
     }
@@ -37,9 +43,10 @@ const BooksList = () => {
 
     
     return (
-        <ul>
-            {elements}
-        </ul>
+            <TransitionGroup component="ul">
+                {elements}
+            </TransitionGroup>
+        
     )
 }
 
